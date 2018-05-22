@@ -1,6 +1,6 @@
-package com.estafet.qapractices.hooks;
+package com.hooks;
 
-import com.estafet.qapractices.context.Context;
+import com.context.Context;
 import com.google.inject.Inject;
 import cucumber.api.Scenario;
 import cucumber.api.java.Before;

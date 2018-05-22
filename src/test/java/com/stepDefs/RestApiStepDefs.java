@@ -1,12 +1,13 @@
-package com.estafet.qapractices.stepDefs;
+package com.stepDefs;
 
-import com.estafet.qapractices.context.Context;
-import com.estafet.qapractices.models.HttpBinModel;
-import com.estafet.qapractices.models.ReqResUserModel;
-import com.estafet.qapractices.rest.HttpBinTasks;
-import com.estafet.qapractices.rest.ReqResTasks;
+import com.context.Context;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
+import com.models.HttpBinModel;
+import com.models.ReqResUserModel;
+import com.rest.HttpBinTasks;
+import com.rest.ReqResTasks;
+
 import cucumber.api.DataTable;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;

@@ -1,4 +1,4 @@
-package com.estafet.qapractices.context;
+package com.context;
 
 import com.google.common.collect.Maps;
 import cucumber.api.Scenario;

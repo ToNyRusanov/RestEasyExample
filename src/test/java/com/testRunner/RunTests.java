@@ -1,4 +1,4 @@
-package com.estafet.qapractices.testRunner;
+package com.testRunner;
 
 /**
  * Created by Pesho on 01-Sep-17.
@@ -22,8 +22,8 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        glue = {"com.estafet.qapractices.stepDefs",
-                "com.estafet.qapractices.hooks"
+        glue = {"com.stepDefs",
+                "com.hooks"
         },
         features = {"src/test/resources/features/"},
         plugin = {

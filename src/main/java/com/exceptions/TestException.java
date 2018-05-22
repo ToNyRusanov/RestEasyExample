@@ -1,4 +1,4 @@
-package com.estafet.qapractices.exceptions;
+package com.exceptions;
 
 /**
  * Created by Pesho on 15-Sep-17.

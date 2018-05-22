@@ -1,6 +1,7 @@
-package com.estafet.qapractices.stepDefs;
+package com.stepDefs;
 
-import com.estafet.qapractices.sampleClasses.ExampleClass;
+import com.sampleClasses.ExampleClass;
+
 import cucumber.api.java.en.Given;
 
 /**

@@ -1,4 +1,4 @@
-package com.estafet.qapractices.rest;
+package com.rest;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

@@ -1,9 +1,10 @@
-package com.estafet.qapractices.rest;
+package com.rest;
 
-import com.estafet.qapractices.env.Environment;
-import com.estafet.qapractices.exceptions.TestException;
-import com.estafet.qapractices.models.HttpBinModel;
+import com.env.Environment;
+import com.exceptions.TestException;
 import com.google.inject.Inject;
+import com.models.HttpBinModel;
+
 import org.awaitility.core.ConditionTimeoutException;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;

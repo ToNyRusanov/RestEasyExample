@@ -1,4 +1,4 @@
-package com.estafet.qapractices.sampleClasses;
+package com.sampleClasses;
 
 /**
  * Created by Pesho on 01-Sep-17.

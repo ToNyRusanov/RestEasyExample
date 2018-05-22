@@ -1,6 +1,6 @@
-package com.estafet.qapractices.env;
+package com.env;
 
-import com.estafet.qapractices.exceptions.TestException;
+import com.exceptions.TestException;
 import com.google.common.collect.Maps;
 import com.google.inject.Inject;
 import org.yaml.snakeyaml.Yaml;

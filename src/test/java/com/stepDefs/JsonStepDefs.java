@@ -1,7 +1,7 @@
-package com.estafet.qapractices.stepDefs;
+package com.stepDefs;
 
-import com.estafet.qapractices.context.Context;
-import com.estafet.qapractices.exceptions.TestException;
+import com.context.Context;
+import com.exceptions.TestException;
 import com.google.inject.Inject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;

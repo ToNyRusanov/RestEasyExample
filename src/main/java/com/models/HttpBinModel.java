@@ -1,4 +1,4 @@
-package com.estafet.qapractices.models;
+package com.models;
 
 import com.google.gson.annotations.Expose;
 
