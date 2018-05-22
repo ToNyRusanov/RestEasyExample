@@ -2,7 +2,6 @@ package com.rest;
 
 import com.env.Environment;
 import com.google.gson.Gson;
-import com.google.inject.Inject;
 import com.models.ReqResUserModel;
 import com.models.ReqResUsersModel;
 
@@ -10,6 +9,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 /**
@@ -24,7 +24,7 @@ public class ReqResTasks {
      * Constructor. It injects the environment file and assigns the env property to the one in this class- this.env.
      * getTarget().proxy(HttpBinApi.class) - loads the HttpBinApi as a target for the client
      */
-    @Inject
+    @com.google.inject.Inject
     public ReqResTasks(final Environment env) {
         this.env = env;
         this.reqResApi = getTarget().proxy(ReqResApi.class);

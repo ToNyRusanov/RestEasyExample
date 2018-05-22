@@ -2,7 +2,6 @@ package com.stepDefs;
 
 import com.context.Context;
 import com.google.common.collect.Maps;
-import com.google.inject.Inject;
 import com.models.HttpBinModel;
 import com.models.ReqResUserModel;
 import com.rest.HttpBinTasks;
@@ -15,6 +14,7 @@ import cucumber.api.java.en.When;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.Assert;
 
+import javax.inject.Inject;
 import javax.ws.rs.core.Response;
 
 import static org.junit.Assert.assertTrue;
@@ -25,14 +25,14 @@ import java.util.Map;
 /**
  * Created by Pesho on 15-Sep-17.
  */
-public final class RestApiStepDefs {
+public final class RestApiStepDefs1 {
 
 	private HttpBinTasks httpBinTasks;
 	private Context context;
 	private ReqResTasks reqResTasks;
 
-	@Inject
-	public RestApiStepDefs(final HttpBinTasks httpBinTasks, final Context context, final ReqResTasks reqResTasks) {
+	@com.google.inject.Inject
+	public RestApiStepDefs1(final HttpBinTasks httpBinTasks, final Context context, final ReqResTasks reqResTasks) {
 		this.httpBinTasks = httpBinTasks;
 		this.context = context;
 		this.reqResTasks = reqResTasks;
@@ -78,15 +78,15 @@ public final class RestApiStepDefs {
 		context.saveData("response", response);
 	}
 
-	@Given("^a user lists all available users$")
-	public void userListsAllUsers() {
+	@Given("^the user lists all available users$")
+	public void theuserListsAllUsers() {
 		List<ReqResUserModel> users = reqResTasks.listUsers().getData();
 		context.saveData("users", users);
 
 	}
 
-	@When("^user \"([^\"]*)\" (doesn't )?exist$")
-	public void userCannotFindAmongExisting(final String userName, final String negate) {
+	@When("^if user \"([^\"]*)\" (doesn't )?exist$")
+	public void ifuserCannotFindAmongExisting(final String userName, final String negate) {
 		List<ReqResUserModel> users = (List<ReqResUserModel>) context.getSavedData("users");
 		for (ReqResUserModel user : users) {
 			if (negate != null) {
@@ -102,7 +102,7 @@ public final class RestApiStepDefs {
 		}
 	}
 
-	@Then("^the user create a new user \"([^\"]*)\"$")
+	@Then("^user create a new user \"([^\"]*)\"$")
 	public void userCreatesNewUser(final String userNames) {
 		final String[] splitUserNames = userNames.split(" ");
 		ReqResUserModel userModel = new ReqResUserModel();
@@ -115,7 +115,7 @@ public final class RestApiStepDefs {
 		context.saveData("newUser", createResp.getEntity());
 	}
 
-	@Then("the user can be updated to \"([^\"]*)\"$")
+	@Then("the user names can be updated to \"([^\"]*)\"$")
 	public void canBeUpdate(final String userNameTobeUsed) {
 
 		final String userId = (String) context.getSavedData("userIndex");
@@ -143,11 +143,20 @@ public final class RestApiStepDefs {
 
 	}
 
-	@Then("^the user delete a new user by ID$")
-	public void the_user_delete_a_new_user_by_ID() {
+	@Then("^the user delete a selected user by ID$")
+	public void the_user_delete_a_selected_user_by_ID() {
 
 		final Response delResponse = reqResTasks.deleteUser((String) context.getSavedData("new userId"));
 
 		assertTrue(delResponse.getStatus() == 204);
+	}
+	@Then("^the user first name can be updated to \"([^\"]*)\"$")
+	public void the_user_first_name_can_be_updated_to(String firstName)  {
+		ReqResUserModel userModel = new ReqResUserModel();
+		userModel.setFirstName(firstName);
+		String userId = (String) context.getSavedData("new userId");
+		final Response response = reqResTasks.updateUser(userId, userModel);
+		
+		assertTrue(response.getStatus() == 200);
 	}
 }

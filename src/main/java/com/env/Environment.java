@@ -1,11 +1,5 @@
 package com.env;
 
-import com.exceptions.TestException;
-import com.google.common.collect.Maps;
-import com.google.inject.Inject;
-import org.yaml.snakeyaml.Yaml;
-import org.yaml.snakeyaml.error.YAMLException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -13,6 +7,15 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.yaml.snakeyaml.Yaml;
+import org.yaml.snakeyaml.error.YAMLException;
+
+import com.exceptions.TestException;
+import com.google.common.collect.Maps;
+
 
 /**
  * Created by Pesho on 15-Sep-17.
@@ -26,7 +29,7 @@ public class Environment {
     public static final String FRAMEWORK_DIR = ".";
     private Map<String, Object> environment = Maps.newHashMap();
 
-    @Inject
+    @com.google.inject.Inject
     public Environment() {
         init();
     }

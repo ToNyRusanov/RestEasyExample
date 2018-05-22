@@ -1,20 +1,20 @@
 package com.rest;
 
-import com.env.Environment;
-import com.exceptions.TestException;
-import com.google.inject.Inject;
-import com.models.HttpBinModel;
+import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+import javax.ws.rs.core.Response;
+
+import org.awaitility.Awaitility;
 import org.awaitility.core.ConditionTimeoutException;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
-import javax.ws.rs.core.Response;
+import com.env.Environment;
+import com.exceptions.TestException;
 
-import static java.util.concurrent.TimeUnit.SECONDS;
-import static org.awaitility.Awaitility.await;
-
+import com.models.HttpBinModel;
 
 /**
  * This method configures the ReSTEasy client for a target- in this case HttpBin.
@@ -32,7 +32,7 @@ public class HttpBinTasks {
      * Constructor. It injects the environment file and assigns the env property to the one in this class- this.env.
      * getTarget().proxy(HttpBinApi.class) - loads the HttpBinApi as a target for the client
      */
-    @Inject
+    @com.google.inject.Inject
     public HttpBinTasks(final Environment env) {
         this.env = env;
         this.httpBinApi = getTarget().proxy(HttpBinApi.class);
@@ -58,8 +58,8 @@ public class HttpBinTasks {
           If it does not before "pollTimeoutInSeconds" is reached, a ConditionTimeoutException is thrown.
          */
         try {
-            await().with().pollInterval(pollingIntervalInSeconds, SECONDS)
-                    .atMost(pollTimeoutInSeconds, SECONDS).await("Polling for feature update")
+            Awaitility.await().with().pollInterval(pollingIntervalInSeconds, TimeUnit.SECONDS)
+                    .atMost(pollTimeoutInSeconds, TimeUnit.SECONDS).await("Polling for feature update")
                     .until(() -> {
                 response[0] = httpBinApi.getMethod();
                         return response[0].getStatus() == 200;
